@@ -16,7 +16,9 @@ from pathlib import Path
 import streamlit as st
 
 # ──────────────────────────────────────────────────────────────────
-# CONFIG — adjust this path to wherever you saved your trained RoBERTa model
+# CONFIG — local folder path, OR a Hugging Face Hub repo id
+# (e.g. "username-kamu/roberta-cv-ner") if you uploaded the model there
+# instead of committing it to git.
 # ──────────────────────────────────────────────────────────────────
 ROBERTA_PATH = "models/roberta-ner-final"
 
@@ -40,63 +42,13 @@ ENTITY_COLORS = {
     "Years of Experience":  "#FFB4A2",
 }
 
-SAMPLE_CV = """Alice Clark
-AI / Machine Learning
-
-Delhi, India Email me on Indeed
-•
-20+ years of experience in data handling, design, and development
-•
-Data Warehouse: Data analysis, star/snow flake scema data modelling and design specific to
-data warehousing and business intelligence
-•
-Database: Experience in database designing, scalability, back-up and recovery, writing and
-optimizing SQL code and Stored Procedures, creating functions, views, triggers and indexes.
-Cloud platform: Worked on Microsoft Azure cloud services like Document DB, SQL Azure,
-Stream Analytics, Event hub, Power BI, Web Job, Web App, Power BI, Azure data lake
-analytics(U-SQL)
-Willing to relocate anywhere
-
-WORK EXPERIENCE
-Software Engineer
-Microsoft – Bangalore, Karnataka
-January 2000 to Present
-1. Microsoft Rewards Live dashboards:
-Description: - Microsoft rewards is loyalty program that rewards Users for browsing and shopping
-online. Microsoft Rewards members can earn points when searching with Bing, browsing with
-Microsoft Edge and making purchases at the Xbox Store, the Windows Store and the Microsoft
-Store. Plus, user can pick up bonus points for taking daily quizzes and tours on the Microsoft
-rewards website. Rewards live dashboards gives a live picture of usage world-wide and by
-markets like US, Canada, Australia, new user registration count, top/bottom performing rewards
-offers, orders stats and weekly trends of user activities, orders and new user registrations. the
-PBI tiles gets refreshed in different frequencies starting from 5 seconds to 30 minutes.
-Technology/Tools used
-
-EDUCATION
-Indian Institute of Technology – Mumbai
-2001
-
-SKILLS
-Machine Learning, Natural Language Processing, and Big Data Handling
-
-ADDITIONAL INFORMATION
-Professional Skills
-• Excellent analytical, problem solving, communication, knowledge transfer and interpersonal
-skills with ability to interact with individuals at all the levels
-• Quick learner and maintains cordial relationship with project manager and team members and
-good performer both in team and independent job environments
-• Positive attitude towards superiors & peers
-• Supervised junior developers throughout project lifecycle and provided technical assistance
-"""
-
 
 # ──────────────────────────────────────────────────────────────────
 # Model loading — RoBERTa via HuggingFace Transformers
 # ──────────────────────────────────────────────────────────────────
 @st.cache_resource(show_spinner="Memuat model RoBERTa...")
 def load_roberta_pipeline(path: str):
-    from transformers import (AutoModelForTokenClassification, AutoTokenizer,
-                               pipeline)
+    from transformers import (AutoModelForTokenClassification, AutoTokenizer, pipeline)
     tokenizer = AutoTokenizer.from_pretrained(path)
     model = AutoModelForTokenClassification.from_pretrained(path)
     # RoBERTa doesn't use token_type_ids — some tokenizer configs still
@@ -105,20 +57,30 @@ def load_roberta_pipeline(path: str):
         tokenizer.model_input_names = [
             n for n in tokenizer.model_input_names if n != "token_type_ids"
         ]
-    return pipeline("ner", model=model, tokenizer=tokenizer,
-                     aggregation_strategy="simple")
+    return pipeline("ner", model=model, tokenizer=tokenizer, aggregation_strategy="simple")
 
 
 def extract_entities(text: str):
-    """Run RoBERTa NER → list of (start, end, label, score)."""
-    if not Path(ROBERTA_PATH).exists():
+    """Run RoBERTa NER → list of (start, end, label, score).
+
+    ROBERTA_PATH can be a local folder OR a Hugging Face Hub repo id
+    (e.g. "username/roberta-cv-ner") — from_pretrained() handles both
+    transparently, so we just try loading and report a clear error if
+    neither resolves.
+    """
+    try:
+        ner_pipe = load_roberta_pipeline(ROBERTA_PATH)
+    except OSError as err:
         raise FileNotFoundError(
-            f"Folder model tidak ditemukan: '{ROBERTA_PATH}'. "
-            "Pastikan kamu sudah download hasil training RoBERTa dari Colab "
-            "(Notebook 04) dan taruh di lokasi ini, atau ubah ROBERTA_PATH "
-            "di app.py."
-        )
-    ner_pipe = load_roberta_pipeline(ROBERTA_PATH)
+            f"Tidak bisa memuat model dari '{ROBERTA_PATH}'. Cek salah satu:\n"
+            "1) Kalau ini folder lokal — pastikan kamu sudah download hasil "
+            "training RoBERTa dari Colab (Notebook 04) dan taruh di lokasi ini.\n"
+            "2) Kalau ini repo id Hugging Face Hub — pastikan repo-nya ada "
+            "dan public (atau sudah login via `huggingface-cli login` kalau "
+            "private).\n"
+            f"Pesan asli: {err}"
+        ) from err
+
     results = ner_pipe(text)
     return [(int(r["start"]), int(r["end"]), r["entity_group"], float(r["score"]))
             for r in results]
@@ -204,8 +166,6 @@ with col_input:
     source = st.radio("Sumber teks", ["Upload .txt", "Paste manual"],
                        horizontal=True)
 
-    # if source == "Contoh CV (Alice Clark)":
-    #     cv_text = st.text_area("Teks CV", value=SAMPLE_CV, height=420)
     if source == "Upload .txt":
         uploaded = st.file_uploader("Upload file CV (.txt)", type=["txt"])
         cv_text = uploaded.read().decode("utf-8", errors="ignore") if uploaded else ""
