@@ -20,7 +20,7 @@ import streamlit as st
 # (e.g. "username-kamu/roberta-cv-ner") if you uploaded the model there
 # instead of committing it to git.
 # ──────────────────────────────────────────────────────────────────
-ROBERTA_PATH = "models/roberta-ner-final"
+ROBERTA_PATH = "blurtie/roberta-cv-ner"
 
 ENTITY_LABELS = [
     "Name", "Email Address", "Skills", "Degree", "College Name",
