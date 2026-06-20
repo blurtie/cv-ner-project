@@ -1,4 +1,4 @@
-# Resume Entity Recognition (NER) System
+# CV Screening Entity Recognition (NER) System
 
 Proyek ini bertujuan untuk mengekstraksi entitas kunci dari dokumen resume secara otomatis menggunakan berbagai pendekatan Natural Language Processing (NLP), mulai dari sistem berbasis aturan (*rule-based*) hingga model Deep Learning berbasis Transformer (RoBERTa).
 
