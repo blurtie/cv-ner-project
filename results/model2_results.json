@@ -1,0 +1,60 @@
+{
+  "model": "Model 2 - Statistical CNN (spaCy tok2vec)",
+  "overall": {
+    "precision": 0.5253,
+    "recall": 0.3985,
+    "f1": 0.4457
+  },
+  "per_entity": {
+    "College Name": {
+      "precision": 0.5,
+      "recall": 0.3636,
+      "f1": 0.4211
+    },
+    "Companies worked at": {
+      "precision": 0.5231,
+      "recall": 0.2833,
+      "f1": 0.3676
+    },
+    "Degree": {
+      "precision": 0.5455,
+      "recall": 0.5455,
+      "f1": 0.5455
+    },
+    "Designation": {
+      "precision": 0.6232,
+      "recall": 0.43,
+      "f1": 0.5089
+    },
+    "Email Address": {
+      "precision": 0.7692,
+      "recall": 0.6977,
+      "f1": 0.7317
+    },
+    "Graduation Year": {
+      "precision": 0.5,
+      "recall": 0.1724,
+      "f1": 0.2564
+    },
+    "Location": {
+      "precision": 0.5079,
+      "recall": 0.4776,
+      "f1": 0.4923
+    },
+    "Name": {
+      "precision": 0.9687,
+      "recall": 0.775,
+      "f1": 0.8611
+    },
+    "Skills": {
+      "precision": 0.3158,
+      "recall": 0.24,
+      "f1": 0.2727
+    },
+    "Years of Experience": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  }
+}

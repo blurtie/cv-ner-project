@@ -1,0 +1,18 @@
+# Core NLP Libraries
+spacy>=3.0.0
+transformers
+torch
+datasets
+
+# Data Manipulation & Visualization
+numpy
+pandas
+matplotlib
+seaborn
+
+# Utilities
+tqdm
+scikit-learn
+
+# Apps
+streamlit

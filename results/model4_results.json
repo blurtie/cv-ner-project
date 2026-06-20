@@ -1,0 +1,60 @@
+{
+  "model": "Model 4 - RoBERTa",
+  "overall": {
+    "precision": 0.4989,
+    "recall": 0.5534,
+    "f1": 0.5248
+  },
+  "per_entity": {
+    "College Name": {
+      "precision": 0.4,
+      "recall": 0.64,
+      "f1": 0.4923
+    },
+    "Companies worked at": {
+      "precision": 0.3378,
+      "recall": 0.2778,
+      "f1": 0.3049
+    },
+    "Degree": {
+      "precision": 0.5357,
+      "recall": 0.75,
+      "f1": 0.625
+    },
+    "Designation": {
+      "precision": 0.4746,
+      "recall": 0.6222,
+      "f1": 0.5385
+    },
+    "Email Address": {
+      "precision": 0.5185,
+      "recall": 0.6512,
+      "f1": 0.5773
+    },
+    "Graduation Year": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "Location": {
+      "precision": 0.6957,
+      "recall": 0.7385,
+      "f1": 0.7164
+    },
+    "Name": {
+      "precision": 0.8605,
+      "recall": 0.925,
+      "f1": 0.8916
+    },
+    "Skills": {
+      "precision": 0.1951,
+      "recall": 0.3478,
+      "f1": 0.25
+    },
+    "Years of Experience": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  }
+}

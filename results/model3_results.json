@@ -1,0 +1,60 @@
+{
+  "model": "Model 3 - DistilBERT",
+  "overall": {
+    "precision": 0.2327,
+    "recall": 0.1953,
+    "f1": 0.2124
+  },
+  "per_entity": {
+    "College Name": {
+      "precision": 0.027,
+      "recall": 0.037,
+      "f1": 0.0312
+    },
+    "Companies worked at": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "Degree": {
+      "precision": 0.037,
+      "recall": 0.0526,
+      "f1": 0.0435
+    },
+    "Designation": {
+      "precision": 0.2262,
+      "recall": 0.2111,
+      "f1": 0.2184
+    },
+    "Email Address": {
+      "precision": 0.4247,
+      "recall": 0.7209,
+      "f1": 0.5345
+    },
+    "Graduation Year": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "Location": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "Name": {
+      "precision": 0.4769,
+      "recall": 0.775,
+      "f1": 0.5905
+    },
+    "Skills": {
+      "precision": 0.0185,
+      "recall": 0.04,
+      "f1": 0.0253
+    },
+    "Years of Experience": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  }
+}

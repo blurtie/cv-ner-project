@@ -1,0 +1,90 @@
+{
+  "model": "Model 1 - Rule-Based (EntityRuler)",
+  "overall": {
+    "precision": 0.1049,
+    "recall": 0.3064,
+    "f1": 0.1348
+  },
+  "per_entity": {
+    "College Name": {
+      "precision": 0.1912,
+      "recall": 0.2364,
+      "f1": 0.2114,
+      "tp": 13,
+      "fp": 55,
+      "fn": 42
+    },
+    "Companies worked at": {
+      "precision": 0.1753,
+      "recall": 0.3667,
+      "f1": 0.2372,
+      "tp": 44,
+      "fp": 207,
+      "fn": 76
+    },
+    "Degree": {
+      "precision": 0.0714,
+      "recall": 0.1136,
+      "f1": 0.0877,
+      "tp": 5,
+      "fp": 65,
+      "fn": 39
+    },
+    "Designation": {
+      "precision": 0.253,
+      "recall": 0.21,
+      "f1": 0.2295,
+      "tp": 21,
+      "fp": 62,
+      "fn": 79
+    },
+    "Email Address": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 1,
+      "fn": 43
+    },
+    "Graduation Year": {
+      "precision": 0.1111,
+      "recall": 1.0,
+      "f1": 0.2,
+      "tp": 29,
+      "fp": 232,
+      "fn": 0
+    },
+    "Location": {
+      "precision": 0.1935,
+      "recall": 0.5373,
+      "f1": 0.2846,
+      "tp": 36,
+      "fp": 150,
+      "fn": 31
+    },
+    "Name": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 0,
+      "fn": 40
+    },
+    "Skills": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "fp": 382,
+      "fn": 50
+    },
+    "Years of Experience": {
+      "precision": 0.0531,
+      "recall": 0.6,
+      "f1": 0.0976,
+      "tp": 6,
+      "fp": 107,
+      "fn": 4
+    }
+  }
+}
