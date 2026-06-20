@@ -1,3 +1,2 @@
-models/
-*.safetensors
-*.bin
+models/distilbert-ner-final
+models/model2_cnn

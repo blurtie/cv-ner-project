@@ -16,3 +16,5 @@ scikit-learn
 
 # Apps
 streamlit
+safetensors
+tokenizers
