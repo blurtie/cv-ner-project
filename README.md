@@ -25,6 +25,9 @@ Berdasarkan pengujian pada data uji, berikut adalah ringkasan hasil evaluasi unt
 ## Dataset:
 https://github.com/laxmimerit/CV-Parsing-using-Spacy-3
 
+## Trained Model
+https://huggingface.co/blurtie/roberta-cv-ner
+
 ## 📁 Struktur Repositori
 - `data/`: Berisi dataset `train.json` dan `test.json`.
 - `notebooks/`: Langkah-langkah pengembangan mulai dari EDA hingga training model.
