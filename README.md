@@ -28,6 +28,9 @@ https://github.com/laxmimerit/CV-Parsing-using-Spacy-3
 ## Trained Model
 https://huggingface.co/blurtie/roberta-cv-ner
 
+## App Deployment (Streamlit)
+https://nlp-cv-ner-lh01.streamlit.app/
+
 ## 📁 Struktur Repositori
 - `data/`: Berisi dataset `train.json` dan `test.json`.
 - `notebooks/`: Langkah-langkah pengembangan mulai dari EDA hingga training model.
